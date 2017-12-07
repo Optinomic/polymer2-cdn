@@ -30,7 +30,7 @@
         font-size: var(--h2-size);
         font-weight: 400;
         letter-spacing: 0.02em;
-        color: #9E9E9E;
+        color: #757575;
         margin-left: 2px;
         margin-top: var(--h2-margin-top);
       }
@@ -62,7 +62,9 @@
           </template>
         </div>
         <template is="dom-if" if="[[h2]]">
-          <p class="title-h2">[[h2]]</p>
+          <p class="title-h2">
+            <span style="color:#BDBDBD">«</span>[[h2]]<span style="color:#BDBDBD">»</span>
+          </p>
         </template>
       </div>
     </div>
