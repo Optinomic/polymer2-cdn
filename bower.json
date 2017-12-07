@@ -122,7 +122,8 @@
     "vaadin-text-field": "vaadin/vaadin-text-field#^1.1.0",
     "vaadin-upload": "vaadin/vaadin-upload#^3.0.0",
     "polymer-redux": "^1.0.5",
-    "obvi": "^2.0.0"
+    "obvi": "^2.0.0",
+    "juicy-ace-editor": "^2.0.4"
   },
   "resolutions": {
     "webcomponentsjs": "^v1.0.2",
