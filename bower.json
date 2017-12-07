@@ -121,7 +121,8 @@
     "vaadin-split-layout": "vaadin/vaadin-split-layout#^3.0.1",
     "vaadin-text-field": "vaadin/vaadin-text-field#^1.1.0",
     "vaadin-upload": "vaadin/vaadin-upload#^3.0.0",
-    "polymer-redux": "^1.0.5"
+    "polymer-redux": "^1.0.5",
+    "obvi": "^2.0.0"
   },
   "resolutions": {
     "webcomponentsjs": "^v1.0.2",
