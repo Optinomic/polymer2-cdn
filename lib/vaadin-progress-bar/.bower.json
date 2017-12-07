@@ -44,6 +44,5 @@
   },
   "_source": "https://github.com/vaadin/vaadin-progress-bar.git",
   "_target": "^1.0.0-alpha7",
-  "_originalSource": "vaadin/vaadin-progress-bar",
-  "_direct": true
+  "_originalSource": "vaadin/vaadin-progress-bar"
 }
