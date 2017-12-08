@@ -1,0 +1,91 @@
+<link rel="import" href="polymer/polymer-element.html">
+<link rel="import" href="paper-button/paper-button.html">
+<link rel="import" href="imports.html">
+
+<dom-module id="optinomic-clipboard">
+
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+      #container {}
+    </style>
+    <div id="container" data-clipboard-text$="[[text]]" data-clipboard-action$="[[action]]" data-clipboard-target$="[[target]]">
+      <slot></slot>
+    </div>
+  </template>
+
+  <script>
+    Polymer({
+      is: "optinomic-clipboard",
+      properties: {
+        /**
+           * The text to copy
+           */
+        text: {
+          type: String
+        },
+        /**
+           * The action (copy or cut)
+           */
+        action: {
+          type: String,
+          value: "copy",
+          observer: "_onActionChange"
+        },
+        /**
+           * The selector of the element whose text content will be used for copying
+           * instead of the `text` property.
+           */
+        target: {
+          type: String
+        },
+        _allowedValues: {
+          type: Array
+        },
+        /**
+           * If true, log messages will automatically be logged to the console.
+           */
+        verbose: {
+          type: Boolean,
+          value: false
+        },
+        /**
+           * The focused element for cases when focus has been changed (e.g. in modal dialogs).
+           */
+        container: {
+          type: Object,
+          value: undefined
+        }
+      },
+      observers: [],
+      // ***************************************************************************************** Observers *****************************************************************************************
+      _onActionChange: function (newValue, oldValue) {
+
+        if (this._allowedValues.indexOf(newValue) < 0) {
+          this.action = this._allowedValues[0];
+        }
+      },
+      // ***************************************************************************************** Event listeners *****************************************************************************************
+      _onClipboardSuccess: function (evt) {
+        if (this.verbose) {
+          console.debug("[granite-clipboard] _onClipboardSuccess", evt);
+        }
+        this.fire("clipboard-" + this.action, evt);
+      },
+      // ***************************************************************************************** Lifecycle methods *****************************************************************************************
+      created: function () {
+        this._allowedValues = ['copy', 'cut'];
+      },
+      attached: function () {
+        this.clipboard = new Clipboard(this.$.container, {container: this.container});
+        this.clipboard.on('success', this._onClipboardSuccess.bind(this));
+      },
+      detached: function () {
+        this.clipboard.destroy();
+      }
+    });
+  </script>
+
+</dom-module>
