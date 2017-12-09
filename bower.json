@@ -124,7 +124,9 @@
     "polymer-redux": "^1.0.5",
     "obvi": "^2.0.0",
     "juicy-ace-editor": "^2.0.4",
-    "juicy-jsoneditor": "^1.2.0"
+    "juicy-jsoneditor": "^1.2.0",
+    "vaadin-dialog": "vaadin/vaadin-dialog#^1.0.1",
+    "vaadin-valo-theme": "vaadin/vaadin-valo-theme#^0.3.2"
   },
   "resolutions": {
     "webcomponentsjs": "^v1.0.2",
