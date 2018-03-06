@@ -1,5 +1,47 @@
 # Prism Changelog
 
+## Unreleased
+
+### New components
+* __Content-Security-Policy (CSP)__ ([#1275](https://github.com/PrismJS/prism/issues/1275)) [[`b08cae5`](https://github.com/PrismJS/prism/commit/b08cae5)]
+* __HTTP Public-Key-Pins (HPKP)__ ([#1275](https://github.com/PrismJS/prism/issues/1275)) [[`b08cae5`](https://github.com/PrismJS/prism/commit/b08cae5)]
+* __HTTP String-Transport-Security (HSTS)__ ([#1275](https://github.com/PrismJS/prism/issues/1275)) [[`b08cae5`](https://github.com/PrismJS/prism/commit/b08cae5)]
+* __React TSX__ ([#1280](https://github.com/PrismJS/prism/issues/1280)) [[`fbe82b8`](https://github.com/PrismJS/prism/commit/fbe82b8)]
+
+### Updated components
+* __C++__:
+	* Add C++ platform-independent types ([#1271](https://github.com/PrismJS/prism/issues/1271)) [[`3da238f`](https://github.com/PrismJS/prism/commit/3da238f)]
+* __TypeScript__:
+	* Improve typescript with builtins ([#1277](https://github.com/PrismJS/prism/issues/1277)) [[`5de1b1f`](https://github.com/PrismJS/prism/commit/5de1b1f)]
+
+### Other changes
+* Fix passing of non-enumerable Error properties from the child test runner ([#1276](https://github.com/PrismJS/prism/issues/1276)) [[`38df653`](https://github.com/PrismJS/prism/commit/38df653)]
+
+## 1.10.0 (2018-01-17)
+
+### New components
+* __6502 Assembly__ ([#1245](https://github.com/PrismJS/prism/issues/1245)) [[`2ece18b`](https://github.com/PrismJS/prism/commit/2ece18b)]
+* __Elm__ ([#1174](https://github.com/PrismJS/prism/issues/1174)) [[`d6da70e`](https://github.com/PrismJS/prism/commit/d6da70e)]
+* __IchigoJam BASIC__ ([#1246](https://github.com/PrismJS/prism/issues/1246)) [[`cf840be`](https://github.com/PrismJS/prism/commit/cf840be)]
+* __Io__ ([#1251](https://github.com/PrismJS/prism/issues/1251)) [[`84ed3ed`](https://github.com/PrismJS/prism/commit/84ed3ed)]
+
+### Updated components
+* __BASIC__:
+	* Make strings greedy [[`60114d0`](https://github.com/PrismJS/prism/commit/60114d0)]
+* __C++__:
+	* Add C++11 raw string feature ([#1254](https://github.com/PrismJS/prism/issues/1254)) [[`71595be`](https://github.com/PrismJS/prism/commit/71595be)]
+
+### Updated plugins
+* __Autoloader__:
+	* Add support for `data-autoloader-path` ([#1242](https://github.com/PrismJS/prism/issues/1242)) [[`39360d6`](https://github.com/PrismJS/prism/commit/39360d6)]
+* __Previewers__:
+	* New plugin combining previous plugins Previewer: Base, Previewer: Angle, Previewer: Color, Previewer: Easing, Previewer: Gradient and Previewer: Time. ([#1244](https://github.com/PrismJS/prism/issues/1244)) [[`28e4b4c`](https://github.com/PrismJS/prism/commit/28e4b4c)]
+* __Unescaped Markup__:
+	* Make it work with any language ([#1265](https://github.com/PrismJS/prism/issues/1265)) [[`7bcdae7`](https://github.com/PrismJS/prism/commit/7bcdae7)] 
+
+### Other changes
+* Add attribute `style` in `package.json` ([#1256](https://github.com/PrismJS/prism/issues/1256)) [[`a9b6785`](https://github.com/PrismJS/prism/commit/a9b6785)]
+
 ## 1.9.0 (2017-12-06)
 
 ### New components

@@ -3,7 +3,7 @@
   "authors": [
     "The Polymer Authors"
   ],
-  "version": "2.0.2",
+  "version": "2.1.0",
   "description": "Web Components for managing user data in web apps",
   "main": [
     "app-storage-behavior.html",
@@ -29,7 +29,7 @@
     "paper-input": "polymerelements/paper-input#1 - 2",
     "paper-styles": "polymerelements/paper-styles#1 - 2",
     "promise-polyfill": "polymerlabs/promise-polyfill#1 - 2",
-    "web-component-tester": "^6.0.0",
+    "web-component-tester": "^4.0.0",
     "webcomponentsjs": "webcomponents/webcomponentsjs#^1.0.0"
   },
   "variants": {
@@ -59,11 +59,12 @@
   "resolutions": {
     "webcomponentsjs": "^1.0.0"
   },
-  "_release": "2.0.2",
+  "ignore": [],
+  "_release": "2.1.0",
   "_resolution": {
     "type": "version",
-    "tag": "v2.0.2",
-    "commit": "120d8872839c7a3c798cda7e2f7ea86a8a739d43"
+    "tag": "v2.1.0",
+    "commit": "6c7ffd050afff3b190e5a4fb8cfc9916bdad9364"
   },
   "_source": "https://github.com/PolymerElements/app-storage.git",
   "_target": "^2.0.0",

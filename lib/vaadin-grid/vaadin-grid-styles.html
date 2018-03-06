@@ -20,6 +20,10 @@ This program is available under Apache License Version 2.0, available at https:/
         transform: translateZ(0);
       }
 
+      :host([hidden]) {
+        display: none !important;
+      }
+
       #scroller {
         display: block;
         position: relative;
@@ -35,6 +39,13 @@ This program is available under Apache License Version 2.0, available at https:/
         overflow: auto;
         z-index: -2;
         position: relative;
+        outline: none;
+      }
+
+      /* Avoid jumpy headers on Edge & IE */
+      [wheel-scrolling][edge] #table,
+      [wheel-scrolling][ie] #table {
+        z-index: auto;
       }
 
       #header {
@@ -156,6 +167,7 @@ This program is available under Apache License Version 2.0, available at https:/
 
       /* Reordering styles */
       :host([reordering]) [part~="cell"] ::slotted(vaadin-grid-cell-content),
+      :host([reordering]) [part~="resize-handle"],
       #scroller[no-content-pointer-events] [part~="cell"] ::slotted(vaadin-grid-cell-content) {
         pointer-events: none;
       }
@@ -168,10 +180,13 @@ This program is available under Apache License Version 2.0, available at https:/
       }
 
       :host([reordering]) {
-        -ms-user-select: none;
         -moz-user-select: none;
         -webkit-user-select: none;
         user-select: none;
+      }
+
+      #scroller[ie][column-reordering-allowed] [part~="header-cell"] {
+        -ms-user-select: none;
       }
 
       :host([reordering]) #outerscroller {
@@ -221,19 +236,15 @@ This program is available under Apache License Version 2.0, available at https:/
         display: none;
       }
 
-      .sizer [part~="cell"] {
-        display: block;
-        flex-shrink: 0;
-        line-height: 0;
-        font-size: 1px;
-        margin-top: -1em;
-      }
-
       .sizer [part~="cell"][hidden] {
         display: none;
       }
 
       .sizer [part~="cell"] {
+        display: block;
+        flex-shrink: 0;
+        line-height: 0;
+        margin-top: -1em;
         height: 0 !important;
         min-height: 0 !important;
         max-height: 0 !important;
@@ -339,8 +350,8 @@ This program is available under Apache License Version 2.0, available at https:/
         box-shadow: inset 0 0 0 3px rgba(0, 0, 0, .25);
       }
 
-      :host([loading]) [part~="body-cell"] ::slotted(vaadin-grid-cell-content) {
-        opacity: 0.5;
+      [part~="row"][loading] [part~="body-cell"] ::slotted(vaadin-grid-cell-content) {
+        opacity: 0;
       }
     </style>
   </template>

@@ -1,0 +1,86 @@
+<link rel="import" href="lib/polymer/polymer-element.html">
+
+<script src="https://www.gstatic.com/firebasejs/4.9.0/firebase.js"></script>
+<script src="https://www.gstatic.com/firebasejs/4.9.0/firebase-firestore.js"></script>
+
+<dom-module id="optinomic-tarmed">
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+    </style>
+    <h2>Hello [[prop1]]!</h2>
+  </template>
+
+  <script>
+    /**
+     * `optinomic-tarmed`
+     * TARMED - Browser
+     *
+     * @customElement
+     * @polymer
+     * @demo demo/index.html
+     */
+    class OptinomicTarmed extends Polymer.Element {
+      static get is() {
+        return 'optinomic-tarmed';
+      }
+      static get properties() {
+        return {
+          prop1: {
+            type: String,
+            value: 'optinomic-tarmed'
+          }
+        };
+      }
+
+      _firebaseInit() {
+
+        // Initialize Firebase
+        var config = {
+          apiKey: "AIzaSyA7H_ptnNW1nX3x_mUt_ZdqRSOVR4obPDc",
+          authDomain: "tarpsy-2018.firebaseapp.com",
+          databaseURL: "https://tarpsy-2018.firebaseio.com",
+          projectId: "tarpsy-2018",
+          storageBucket: "tarpsy-2018.appspot.com",
+          messagingSenderId: "542108232226"
+        };
+        firebase.initializeApp(config);
+
+        // Initialize Cloud Firestore through Firebase
+        var db = firebase.firestore();
+
+        var docRef = db.collection("TARMED_D").doc("00");
+
+        // Read Root
+        docRef.get().then(function (doc) {
+          if (doc.exists) {
+            console.warn("Document data:", doc.data());
+          } else {
+            // doc.data() will be undefined in this case
+            console.log("No such document!");
+          }
+        }).catch(function (error) {
+          console.log("Error getting document:", error);
+        });
+
+        console.log('_firebase');
+
+        this.set('_clipboardText', "Hallo");
+
+      }
+
+      // ---------------- Lifecycle ----------------
+      ready() {
+        super.ready();
+        this._firebaseInit();
+      }
+
+
+    }
+
+
+    window.customElements.define(OptinomicTarmed.is, OptinomicTarmed);
+  </script>
+</dom-module>

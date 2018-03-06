@@ -15,6 +15,7 @@
 ```
 <custom-element-demo>
   <template>
+    <script src="../webcomponentsjs/webcomponents-lite.js"></script>
     <link rel="import" href="vaadin-progress-bar.html">
     <next-code-block></next-code-block>
   </template>
@@ -25,10 +26,28 @@
 ```html
 <vaadin-progress-bar></vaadin-progress-bar>
 <vaadin-progress-bar value="0.3"></vaadin-progress-bar>
+<vaadin-progress-bar indeterminate></vaadin-progress-bar>
 ```
 
-[<img src="https://raw.githubusercontent.com/vaadin/vaadin-progress-bar/master/screenshot.png" width="780" alt="Screenshot of vaadin-progress-bar">](https://vaadin.com/elements/-/element/vaadin-progress-bar)
+[<img src="https://raw.githubusercontent.com/vaadin/vaadin-progress-bar/master/screenshot.gif" width="418" alt="Screenshot of vaadin-progress-bar">](https://vaadin.com/elements/vaadin-progress-bar)
 
+## Getting Started
+
+Vaadin Elements use the Lumo theme by default.
+
+## The file structure for Vaadin Elements
+
+- `src/vaadin-progress-bar.html`
+
+  Unstyled element.
+
+- `theme/lumo/vaadin-progress-bar.html`
+
+  Element with Lumo theme.
+
+- `vaadin-progress-bar.html`
+
+  Alias for theme/lumo/vaadin-progress-bar.html
 
 ## Running demos and tests in browser
 
@@ -67,3 +86,5 @@ We are using [ESLint](http://eslint.org/) for linting JavaScript code. You can c
 ## License
 
 Apache License 2.0
+
+Vaadin collects development time usage statistics to improve this product. For details and to opt-out, see https://github.com/vaadin/vaadin-usage-statistics.

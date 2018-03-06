@@ -5,4 +5,4 @@ _[Demo and API docs](https://elements.polymer-project.org/elements/iron-range-be
 
 ## Polymer.IronRangeBehavior
 
-`iron-range-behavior` provides the behavior for something with a minimum to maximum range. :-)
+`iron-range-behavior` provides the behavior for something with a minimum to maximum range.

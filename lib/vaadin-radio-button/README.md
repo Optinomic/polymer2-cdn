@@ -31,8 +31,29 @@
 </vaadin-radio-group>
 ```
 
-[<img src="https://raw.githubusercontent.com/vaadin/vaadin-radio-button/master/screenshot.png" width="162" alt="Screenshot of vaadin-radio-group">](https://vaadin.com/elements/-/element/vaadin-radio-button)
+[<img src="https://raw.githubusercontent.com/vaadin/vaadin-radio-button/master/screenshot.png" width="237" alt="Screenshot of vaadin-radio-group">](https://vaadin.com/elements/vaadin-radio-button)
 
+## Getting Started
+
+Vaadin Elements use the Lumo theme by default.
+
+## The file structure for Vaadin Elements
+
+- `src/vaadin-radio-button.html`
+- `src/vaadin-radio-group.html`
+
+  Unstyled elements.
+
+- `theme/lumo/vaadin-radio-button.html`
+- `theme/lumo/vaadin-radio-group.html`
+
+  Elements with Lumo theme.
+
+- `vaadin-radio-button.html`
+- `vaadin-radio-group.html`
+
+  Alias for theme/lumo/vaadin-radio-button.html
+  theme/lumo/vaadin-radio-group.html
 
 ## Running demos and tests in browser
 
@@ -71,3 +92,5 @@ We are using [ESLint](http://eslint.org/) for linting JavaScript code. You can c
 ## License
 
 Apache License 2.0
+
+Vaadin collects development time usage statistics to improve this product. For details and to opt-out, see https://github.com/vaadin/vaadin-usage-statistics.

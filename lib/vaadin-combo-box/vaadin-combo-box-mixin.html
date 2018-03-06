@@ -110,7 +110,7 @@ This program is available under Apache License Version 2.0, available at https:/
         },
 
         /*
-         * When set to `true`, "loading" attibute is added to host and the overlay element.
+         * When set to `true`, "loading" attribute is added to host and the overlay element.
          */
         loading: {
           type: Boolean,
@@ -471,6 +471,7 @@ This program is available under Apache License Version 2.0, available at https:/
       // the items synchonously. It is required to have the items rendered
       // before we update the overlay and the list positions and sizes.
       this.$.overlay.ensureItemsRendered();
+      this.$.overlay._selector.toggleScrollListener(true);
 
       // Ensure metrics are up-to-date
       this.$.overlay.updateViewportBoundaries();
@@ -740,9 +741,9 @@ This program is available under Apache License Version 2.0, available at https:/
 
 
     /**
-     * Returns true if `value` is valid, and sets the `invalid` flag appropriatelly.
+     * Returns true if `value` is valid, and sets the `invalid` flag appropriately.
      *
-     * @return {boolean} True if the value is valid and sets the `invalid` flag appropriatelly
+     * @return {boolean} True if the value is valid and sets the `invalid` flag appropriately
      */
     validate() {
       return !(this.invalid = !this.checkValidity());

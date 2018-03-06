@@ -38,6 +38,11 @@ This program is available under Apache License Version 2.0, available at https:/
     ready() {
       super.ready();
 
+      if (this._ios || this._android) {
+        // Disable keyboard navigation on mobile devices
+        return;
+      }
+
       this.addEventListener('keydown', this._onKeyDown);
       this.addEventListener('focusin', this._onFocusIn);
       this.addEventListener('focusout', this._onFocusOut);
@@ -119,11 +124,9 @@ This program is available under Apache License Version 2.0, available at https:/
     }
 
     _ensureScrolledToIndex(index) {
-      const visibleItemsCount = this._lastVisibleIndex - this._firstVisibleIndex - 1;
-      if (index <= this._firstVisibleIndex) {
+      const targetRowInDom = Array.from(this.$.items.children).filter(child => child.index === index)[0];
+      if (!targetRowInDom) {
         this._scrollToIndex(index);
-      } else if (index >= this._firstVisibleIndex + visibleItemsCount) {
-        this._scrollToIndex(index - visibleItemsCount);
       }
     }
 
@@ -173,7 +176,7 @@ This program is available under Apache License Version 2.0, available at https:/
       const activeRow = activeCell.parentNode;
 
       const activeRowGroup = activeRow.parentNode;
-      const maxRowIndex = (activeRowGroup === this.$.items ? this.size : activeRowGroup.children.length) - 1;
+      const maxRowIndex = (activeRowGroup === this.$.items ? this._effectiveSize : activeRowGroup.children.length) - 1;
 
       // Body rows have index property, otherwise DOM child index of the row is used.
       const rowIndex = (activeRowGroup === this.$.items) ?
@@ -187,7 +190,7 @@ This program is available under Apache License Version 2.0, available at https:/
       let dstIsRowDetails = false;
       if (activeRowGroup === this.$.items) {
         const item = activeRow._item;
-        const dstItem = this._getCachedItem(dstRowIndex);
+        const dstItem = this._cache.getItemForIndex(dstRowIndex);
         // Should we navigate to row details?
         if (isRowDetails) {
           dstIsRowDetails = dy === 0;
@@ -208,15 +211,15 @@ This program is available under Apache License Version 2.0, available at https:/
       if (activeRowGroup !== this.$.items) {
         if (dstRowIndex > rowIndex) {
           while (
-              dstRowIndex < maxRowIndex &&
-              activeRowGroup.children[dstRowIndex].hidden
+            dstRowIndex < maxRowIndex &&
+            activeRowGroup.children[dstRowIndex].hidden
           ) {
             dstRowIndex++;
           }
         } else if (dstRowIndex < rowIndex) {
           while (
-              dstRowIndex > 0 &&
-              activeRowGroup.children[dstRowIndex].hidden
+            dstRowIndex > 0 &&
+            activeRowGroup.children[dstRowIndex].hidden
           ) {
             dstRowIndex--;
           }
@@ -237,7 +240,8 @@ This program is available under Apache License Version 2.0, available at https:/
       // original _focusedColumnOrder in the sorted array of orders
       // of the visible columns on the destination row.
       const dstColumns = this._getColumns(activeRowGroup, dstRowIndex);
-      const dstSortedColumnOrders = dstColumns.filter(c => !c.hidden).map(c => c._order).sort();
+      const dstSortedColumnOrders = dstColumns.filter(c => !c.hidden).map(c => c._order)
+        .sort((b, a) => (b - a));
       const maxOrderedColumnIndex = dstSortedColumnOrders.length - 1;
       const orderedColumnIndex = dstSortedColumnOrders.indexOf(
         dstSortedColumnOrders.slice(0).sort((b, a) =>
@@ -391,7 +395,7 @@ This program is available under Apache License Version 2.0, available at https:/
           // scrolling. Focus the row for the stored focused item index instead.
           const columnIndex = Array.from(targetRow.children).indexOf(this._itemsFocusable);
           const focusedItemRow = Array.from(this.$.items.children)
-              .filter(row => row.index === this._focusedItemIndex)[0];
+            .filter(row => row.index === this._focusedItemIndex)[0];
           if (focusedItemRow) {
             itemsFocusTarget = focusedItemRow.children[columnIndex];
           }
@@ -451,12 +455,12 @@ This program is available under Apache License Version 2.0, available at https:/
 
       if (e.composedPath().indexOf(this.$.table) === 3) {
         const cell = e.composedPath()[0];
-        const rowGroup = cell.parentNode.parentNode;
-        if (rowGroup === this.$.header) {
+        this._activeRowGroup = cell.parentNode.parentNode;
+        if (this._activeRowGroup === this.$.header) {
           this._headerFocusable = cell;
-        } else if (rowGroup === this.$.items) {
+        } else if (this._activeRowGroup === this.$.items) {
           this._itemsFocusable = cell;
-        } else if (rowGroup === this.$.footer) {
+        } else if (this._activeRowGroup === this.$.footer) {
           this._footerFocusable = cell;
         }
         // Inform cell content of the focus (used in <vaadin-grid-sorter>)
@@ -488,7 +492,7 @@ This program is available under Apache License Version 2.0, available at https:/
     }
 
     _preventScrollerRotatingCellFocus(item, index) {
-      if (item.index === this._focusedItemIndex && this.hasAttribute('navigating')) {
+      if (item.index === this._focusedItemIndex && this.hasAttribute('navigating') && this._activeRowGroup === this.$.items) {
         // Focused item has went, hide navigation mode
         this._navigatingIsHidden = true;
         this._toggleAttribute('navigating', false, this);
@@ -575,8 +579,7 @@ This program is available under Apache License Version 2.0, available at https:/
 
     _elementMatches(el, query) {
       return el.matches ? el.matches(query) :
-        Array.from(el.parentNode.querySelectorAll(query))
-        .indexOf(el) !== -1;
+        Array.from(el.parentNode.querySelectorAll(query)).indexOf(el) !== -1;
     }
   };
 </script>

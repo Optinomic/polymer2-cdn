@@ -125,7 +125,7 @@ Constructs a new JSONEditor.
 
   The following example allow you can create a "Person" node and a "Address" node, each one will appear in your context menu, once you selected the whole json object will be created.
 
-    ```js
+  ```js
   var options = {
     templates: [
           {
@@ -162,6 +162,10 @@ Constructs a new JSONEditor.
 
      Indicate the KeyCodes for trigger confirm completion, by default those keys are:  [39, 35, 9] which are the code for [right, end, tab]
 
+  - `{boolean} caseSensitive`
+
+     Indicate if the autocomplete is going to be strict case-sensitive to match the options.
+
   - `{Function} getOptions (text: string, path: string[], input: string, editor: JSONEditor)`
 
      This function will return your possible options for create the autocomplete selection, you can control dynamically which options you want to display according to the current active editing node.
@@ -186,7 +190,30 @@ Constructs a new JSONEditor.
 
 - `{boolean} statusBar`
 
-  Adds status bar to the buttom of the editor - the status bar shows the cursor position (currently only for 'code' `mode`) and a count of the selected charcters. True by default. Only applicable when `mode` is 'code' or 'text'.
+  Adds status bar to the buttom of the editor - the status bar shows the cursor position and a count of the selected charcters. True by default. Only applicable when `mode` is 'code' or 'text'.
+
+- `{string} language`
+
+  The default language comes from the browser navigator, but you can force a specific language. So use here string as 'en' or 'pt-BR'. Built-in languages: `en`, `pt-BR`. Other translations can be specified via the option `languages`.
+
+
+- `{Object} languages`
+
+  You can override existing translations or provide a new translation for a specific language. To do it provide an object at languages with language and the keys/values to be inserted. For example:
+
+  ```
+  'languages': {
+    'pt-BR': {
+      'auto': 'Automático testing'
+    },
+    'en': {
+      'auto': 'Auto testing'
+    }
+  }
+  ```
+
+  All available fields for translation can be found in the source file `src/js/i18n.js`.
+
 
 ### Methods
 

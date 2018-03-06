@@ -29,12 +29,12 @@
     ".gitignore"
   ],
   "dependencies": {},
-  "version": "5.11.0",
-  "_release": "5.11.0",
+  "version": "5.14.0",
+  "_release": "5.14.0",
   "_resolution": {
     "type": "version",
-    "tag": "v5.11.0",
-    "commit": "a8253afb353058b81c72b91f4a400298013880c2"
+    "tag": "v5.14.0",
+    "commit": "1c596ee84d5e21abc7a67a1a17c6bb1043fcecd5"
   },
   "_source": "https://github.com/josdejong/jsoneditor.git",
   "_target": "^5.9.5",

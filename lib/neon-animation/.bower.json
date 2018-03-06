@@ -1,7 +1,7 @@
 {
   "name": "neon-animation",
   "description": "A system for animating Polymer-based web components",
-  "version": "2.0.2",
+  "version": "2.2.0",
   "authors": [
     "The Polymer Authors"
   ],
@@ -75,11 +75,11 @@
   "resolutions": {
     "webcomponentsjs": "^1.0.0"
   },
-  "_release": "2.0.2",
+  "_release": "2.2.0",
   "_resolution": {
     "type": "version",
-    "tag": "v2.0.2",
-    "commit": "4711ddfdd982833ff922f1b1cb6f45a637aeeca3"
+    "tag": "v2.2.0",
+    "commit": "3153518526a4339891a32496b4b7221656fdcafd"
   },
   "_source": "https://github.com/PolymerElements/neon-animation.git",
   "_target": "^2.0.0",

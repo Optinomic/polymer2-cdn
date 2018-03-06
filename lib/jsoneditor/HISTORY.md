@@ -3,6 +3,50 @@
 https://github.com/josdejong/jsoneditor
 
 
+## 2018-02-25, version 5.14.0
+
+- Implemented support for translations. Thanks @mariohmol.
+- Fixed a bug sometimes occurring when dragging items from array to
+  object, see #509. Thanks @43081j.
+- Fixed autocomplete not accepting returned `null` values, see #512.
+  Thanks @43081j.
+- Fixed memory inefficiency when working with large JSON Schema's
+  generating many errors. Thanks @43081j.
+
+
+## 2018-02-07, version 5.13.3
+
+- Fixed a positioning issue with JSON Schema errors in text/code mode.
+
+
+## 2018-01-18, version 5.13.2
+
+- Fixed view mode opening links in a new tab instead of current tab
+  when Ctrl key is not down. Thanks @LEW21.
+- Fixed #502: code editor not showing a monospaced font some cases.
+
+
+## 2017-12-28, version 5.13.1
+
+- Fixed another occurrence of #494: properties not escaped in the
+  navigation bar.
+
+
+## 2017-12-28, version 5.13.0
+
+- Implemented cursor position in text mode. Thanks @meirotstein.
+- Fixed #494: properties not escaped in the navigation bar.
+  Thanks @meirotstein.
+
+
+## 2017-12-18, version 5.12.0
+
+- Implemented #482: Include `caseSensitive` option for autocomplete.
+  Thanks @israelito3000.
+- Upgraded dependencies
+  - `ajv@5.5.2`
+
+
 ## 2017-11-22, version 5.11.0
 
 - Upgraded dependencies

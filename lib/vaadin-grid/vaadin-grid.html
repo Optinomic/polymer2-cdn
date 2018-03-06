@@ -29,7 +29,16 @@ This program is available under Apache License Version 2.0, available at https:/
   <template>
     <style include="vaadin-grid-styles"></style>
 
-    <div id="scroller" no-scrollbars$="[[!_scrollbarWidth]]" safari$="[[_safari]]" ios$="[[_ios]]" loading$=[[_loading]] edge$="[[_edge]]" firefox$="[[_firefox]]">
+    <div id="scroller"
+      no-scrollbars$="[[!_scrollbarWidth]]"
+      wheel-scrolling$="[[_wheelScrolling]]"
+      safari$="[[_safari]]"
+      ios$="[[_ios]]"
+      loading$=[[loading]]
+      edge$="[[_edge]]"
+      firefox$="[[_firefox]]"
+      ie$="[[_ie]]"
+      column-reordering-allowed$="[[columnReorderingAllowed]]">
       <table id="table" role="grid" aria-multiselectable="true" tabindex="0">
         <caption id="fixedsizer" class="sizer" part="row"></caption>
         <thead id="header" role="rowgroup"></thead>
@@ -88,6 +97,7 @@ This program is available under Apache License Version 2.0, available at https:/
      * - [`<vaadin-grid-filter>`](#/elements/vaadin-grid-filter)
      * - [`<vaadin-grid-sorter>`](#/elements/vaadin-grid-sorter)
      * - [`<vaadin-grid-selection-column>`](#/elements/vaadin-grid-selection-column)
+     * - [`<vaadin-grid-tree-toggle>`](#/elements/vaadin-grid-tree-toggle)
      *
      * __Note that the helper elements must be explicitly imported.__
      * If you want to import everything at once you can use the `all-imports.html` bundle.
@@ -102,6 +112,8 @@ This program is available under Apache License Version 2.0, available at https:/
      * - `[[item]]` and it's sub-properties: Data object (provided by a data provider / items array)
      * - `{{selected}}`: True if the item is selected (can be two-way bound)
      * - `{{detailsOpened}}`: True if the item has row details opened (can be two-way bound)
+     * - `{{expanded}}`: True if the item has tree sublevel expanded (can be two-way bound)
+     * - `[[level]]`: Number of the tree sublevel of the item, first level-items have 0
      *
      * ### Lazy Loading with Function Data Provider
      *
@@ -115,8 +127,31 @@ This program is available under Apache License Version 2.0, available at https:/
      * the API reference below for the detailed data provider arguments description,
      * and the “Assigning Data” page in the demos.
      *
-     * __Note that when using function data providers, `size` always needs to be
-     * set manually.__
+     * __Note that expanding the tree grid's item will trigger a call to the `dataProvider`.__
+     *
+     * __Also, note that when using function data providers, the total number of items
+     * needs to be set manually. The total number of items can be returned
+     * in the second argument of the data provider callback:__
+     *
+     * ```javascript
+     * grid.dataProvider = function(params, callback) {
+     *   var url = 'https://api.example/data' +
+     *       '?page=' + params.page +        // the requested page index
+     *       '&per_page=' + params.pageSize; // number of items on the page
+     *   var xhr = new XMLHttpRequest();
+     *   xhr.onload = function() {
+     *     var response = JSON.parse(xhr.responseText);
+     *     callback(
+     *       response.employees, // requested page of items
+     *       response.totalSize  // total number of items
+     *     );
+     *   };
+     *   xhr.open('GET', url, true);
+     *   xhr.send();
+     * };
+     * ```
+     *
+     * __Alternatively, you can use the `size` property to set the total number of items:__
      *
      * ```javascript
      * grid.size = 200; // The total number of items
@@ -162,6 +197,8 @@ This program is available under Apache License Version 2.0, available at https:/
      * `last-frozen` | Last frozen cell | cell
      * `last-column` | Last visible cell on a row | cell
      * `selected` | Selected row | row
+     * `expanded` | Expanded row | row
+     * `loading` | Row that is waiting for data from data provider | row
      * `odd` | Odd row | row
      *
      *
@@ -184,24 +221,28 @@ This program is available under Apache License Version 2.0, available at https:/
      */
     class GridElement extends
       Vaadin.ThemableMixin(
-      Vaadin.Grid.DataProviderMixin(
-      Vaadin.Grid.ArrayDataProviderMixin(
-      Vaadin.Grid.DynamicColumnsMixin(
-      Vaadin.Grid.CellClickMixin(
-      Vaadin.Grid.ActiveItemMixin(
-      Vaadin.Grid.ScrollMixin(
-      Vaadin.Grid.SelectionMixin(
-      Vaadin.Grid.SortMixin(
-      Vaadin.Grid.RowDetailsMixin(
-      Vaadin.Grid.KeyboardNavigationMixin(
-      Vaadin.Grid.A11yMixin(
-      Vaadin.Grid.FilterMixin(
-      Vaadin.Grid.ColumnReorderingMixin(
-      Vaadin.Grid.ColumnResizingMixin(
-      Vaadin.Grid.ScrollerElement))))))))))))))) {
+        Vaadin.Grid.DataProviderMixin(
+          Vaadin.Grid.ArrayDataProviderMixin(
+            Vaadin.Grid.DynamicColumnsMixin(
+              Vaadin.Grid.CellClickMixin(
+                Vaadin.Grid.ActiveItemMixin(
+                  Vaadin.Grid.ScrollMixin(
+                    Vaadin.Grid.SelectionMixin(
+                      Vaadin.Grid.SortMixin(
+                        Vaadin.Grid.RowDetailsMixin(
+                          Vaadin.Grid.KeyboardNavigationMixin(
+                            Vaadin.Grid.A11yMixin(
+                              Vaadin.Grid.FilterMixin(
+                                Vaadin.Grid.ColumnReorderingMixin(
+                                  Vaadin.Grid.ColumnResizingMixin(
+                                    Vaadin.Grid.ScrollerElement))))))))))))))) {
 
       static get is() {
         return 'vaadin-grid';
+      }
+
+      static get version() {
+        return '4.1.5';
       }
 
       static get observers() {
@@ -213,11 +254,6 @@ This program is available under Apache License Version 2.0, available at https:/
       static get properties() {
         return {
 
-          _safari: {
-            type: Boolean,
-            value: /^((?!chrome|android).)*safari/i.test(navigator.userAgent)
-          },
-
           _this: {
             type: Object,
             value: function() {
@@ -225,32 +261,34 @@ This program is available under Apache License Version 2.0, available at https:/
             }
           },
 
+          _safari: {
+            type: Boolean,
+            value: /^((?!chrome|android).)*safari/i.test(navigator.userAgent)
+          },
+
           _ios: {
             type: Boolean,
-            value: function() {
-              return navigator.userAgent.match(/iP(?:hone|ad;(?: U;)? CPU) OS (\d+)/);
-            }
+            value: /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream
           },
 
           _edge: {
             type: Boolean,
-            value: function() {
-              return typeof CSS !== 'undefined' && CSS.supports('(-ms-ime-align:auto)');
-            }
+            value: typeof CSS !== 'undefined' && CSS.supports('(-ms-ime-align:auto)')
           },
 
           _ie: {
             type: Boolean,
-            value: function() {
-              return !!(navigator.userAgent.match(/Trident/) && !navigator.userAgent.match(/MSIE/));
-            }
+            value: !!(navigator.userAgent.match(/Trident/) && !navigator.userAgent.match(/MSIE/))
           },
 
           _firefox: {
             type: Boolean,
-            value: function() {
-              return navigator.userAgent.toLowerCase().indexOf('firefox') > -1;
-            }
+            value: navigator.userAgent.toLowerCase().indexOf('firefox') > -1
+          },
+
+          _android: {
+            type: Boolean,
+            value: /android/i.test(navigator.userAgent)
           }
         };
       }
@@ -470,7 +508,7 @@ This program is available under Apache License Version 2.0, available at https:/
         row._item = item;
         Array.from(row.children).forEach(cell => {
           if (cell._instance) {
-            if (cell._instance.item === item) {
+            if (this._itemsEqual(cell._instance.item, item)) {
               // Force data system to pick up subproperty changes
               cell._instance._setPendingProperty('item', {}, false);
             }
@@ -480,9 +518,19 @@ This program is available under Apache License Version 2.0, available at https:/
         });
         this._toggleRowSelected(row, this._isSelected(item));
         this._toggleRowDetailsOpened(row, this._rowDetailsTemplate && this._isDetailsOpened(item));
+        this._toggleRowExpanded(row, this._isExpanded(item));
+        this._updateRowLevel(row, this._getIndexLevel(row.index));
         if (this._rowDetailsTemplate) {
           this._toggleDetailsCell(row, item);
         }
+
+        this._debouncerUpdateHeights = Polymer.Debouncer.debounce(this._debouncerUpdateHeights,
+          Polymer.Async.timeOut.after(1), () => {
+            this._updateMetrics();
+            this._positionItems();
+            this._updateScrollerSize();
+          }
+        );
       }
 
       _toggleRowDetailsOpened(row, detailsOpened) {
@@ -504,6 +552,26 @@ This program is available under Apache License Version 2.0, available at https:/
         });
         this._toggleAttribute('selected', selected, row);
         this._a11yUpdateRowSelected(row, selected);
+      }
+
+      _updateRowLevel(row, level) {
+        Array.from(row.children).forEach(cell => {
+          if (cell._instance) {
+            cell._instance.__level__ = level;
+            cell._instance.level = level;
+          }
+        });
+        this._a11yUpdateRowLevel(row, level);
+      }
+
+      _toggleRowExpanded(row, expanded) {
+        Array.from(row.children).forEach(cell => {
+          if (cell._instance) {
+            cell._instance.__expanded__ = expanded;
+            cell._instance.expanded = expanded;
+          }
+        });
+        this._toggleAttribute('expanded', expanded, row);
       }
 
       _resizeHandler() {

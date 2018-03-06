@@ -10,6 +10,16 @@
       "description": "",
       "image": ""
      }
+  },
+  {
+    "name": "Lumo Theme Variations",
+    "url": "progress-bar-lumo-theme-demos",
+    "src": "progress-bar-lumo-theme-demos.html",
+    "meta": {
+      "title": "vaadin-progress-bar Lumo Theme Variations",
+      "description": "",
+      "image": ""
+    }
   }
   ]
 }

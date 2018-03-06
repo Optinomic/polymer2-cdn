@@ -6,21 +6,21 @@
       "description": "",
       "summary": "",
       "sourceRange": {
-        "file": "vaadin-radio-group.html",
+        "file": "src/vaadin-radio-group.html",
         "start": {
-          "line": 235,
+          "line": 226,
           "column": 6
         },
         "end": {
-          "line": 235,
+          "line": 226,
           "column": 42
         }
       },
       "elements": [
         {
-          "description": "`<vaadin-radio-button>` is a Polymer element for radio buttons.\n\n```html\n<vaadin-radio-button value=\"foo\">Foo</vaadin-radio-button>\n```\n\n### Styling\n\n[Generic styling/theming documentation](https://cdn.vaadin.com/vaadin-valo-theme/0.3.1/demo/customization.html)\n\nThe following shadow DOM parts are available for styling:\n\nPart name         | Description\n------------------|----------------\n`wrapper`         | The `<label>` element which wrapps the radio button and [part=\"label\"]\n`native-radio`    | The `<input type=\"radio\">` element\n`radio`           | The `<span>` element for a custom graphical radio button\n`label`           | The `<span>` element for slotted text/HTML label\n\nThe following state attributes are available for styling:\n\nAttribute  | Description | Part name\n-----------|-------------|------------\n`disabled`   | Set when the radio button is disabled. | :host\n`focus-ring` | Set when the radio button is focused using the keyboard. | :host\n`focused`    | Set when the radio button is focused. | :host\n`checked`    | Set when the radio button is checked. | :host",
+          "description": "`<vaadin-radio-button>` is a Polymer element for radio buttons.\n\n```html\n<vaadin-radio-button value=\"foo\">Foo</vaadin-radio-button>\n```\n\n### Styling\n\nThe following shadow DOM parts are available for styling:\n\nPart name         | Description\n------------------|----------------\n`radio`           | The radio button element\n`label`           | The label content element\n\nThe following state attributes are available for styling:\n\nAttribute  | Description | Part name\n-----------|-------------|------------\n`disabled`   | Set when the radio button is disabled. | :host\n`focus-ring` | Set when the radio button is focused using the keyboard. | :host\n`focused`    | Set when the radio button is focused. | :host\n`checked`    | Set when the radio button is checked. | :host\n\nSee [ThemableMixin – how to apply styles for shadow parts](https://github.com/vaadin/vaadin-themable-mixin/wiki)",
           "summary": "",
-          "path": "vaadin-radio-button.html",
+          "path": "src/vaadin-radio-button.html",
           "properties": [
             {
               "name": "autofocus",
@@ -28,7 +28,7 @@
               "description": "Specify that this control should have input focus when the page loads.",
               "privacy": "public",
               "sourceRange": {
-                "file": "bower_components/vaadin-control-state-mixin/vaadin-control-state-mixin.html",
+                "file": "../bower_components/vaadin-control-state-mixin/vaadin-control-state-mixin.html",
                 "start": {
                   "line": 50,
                   "column": 8
@@ -44,44 +44,18 @@
               "inheritedFrom": "Vaadin.ControlStateMixin"
             },
             {
-              "name": "focused",
-              "type": "boolean",
-              "description": "If true, the element currently has focus.\nThis property is @deprecated and will not be accessible in the next major version\nof the component.",
-              "privacy": "private",
-              "sourceRange": {
-                "file": "bower_components/vaadin-control-state-mixin/vaadin-control-state-mixin.html",
-                "start": {
-                  "line": 60,
-                  "column": 8
-                },
-                "end": {
-                  "line": 67,
-                  "column": 9
-                }
-              },
-              "metadata": {
-                "polymer": {
-                  "notify": true,
-                  "observer": "\"_focusedChanged\"",
-                  "readOnly": true
-                }
-              },
-              "defaultValue": "false",
-              "inheritedFrom": "Vaadin.ControlStateMixin"
-            },
-            {
               "name": "_previousTabIndex",
               "type": "number",
               "description": "Stores the previous value of tabindex attribute of the disabled element",
               "privacy": "protected",
               "sourceRange": {
-                "file": "bower_components/vaadin-control-state-mixin/vaadin-control-state-mixin.html",
+                "file": "../bower_components/vaadin-control-state-mixin/vaadin-control-state-mixin.html",
                 "start": {
-                  "line": 72,
+                  "line": 57,
                   "column": 8
                 },
                 "end": {
-                  "line": 74,
+                  "line": 59,
                   "column": 9
                 }
               },
@@ -96,13 +70,13 @@
               "description": "If true, the user cannot interact with this element.",
               "privacy": "public",
               "sourceRange": {
-                "file": "bower_components/vaadin-control-state-mixin/vaadin-control-state-mixin.html",
+                "file": "../bower_components/vaadin-control-state-mixin/vaadin-control-state-mixin.html",
                 "start": {
-                  "line": 79,
+                  "line": 64,
                   "column": 8
                 },
                 "end": {
-                  "line": 83,
+                  "line": 68,
                   "column": 9
                 }
               },
@@ -119,14 +93,14 @@
               "description": "",
               "privacy": "protected",
               "sourceRange": {
-                "file": "bower_components/vaadin-control-state-mixin/vaadin-control-state-mixin.html",
+                "file": "../bower_components/vaadin-control-state-mixin/vaadin-control-state-mixin.html",
                 "start": {
-                  "line": 85,
+                  "line": 70,
                   "column": 8
                 },
                 "end": {
-                  "line": 85,
-                  "column": 32
+                  "line": 72,
+                  "column": 9
                 }
               },
               "metadata": {
@@ -141,11 +115,11 @@
               "privacy": "public",
               "sourceRange": {
                 "start": {
-                  "line": 140,
+                  "line": 144,
                   "column": 10
                 },
                 "end": {
-                  "line": 140,
+                  "line": 144,
                   "column": 20
                 }
               },
@@ -162,11 +136,11 @@
               "privacy": "public",
               "sourceRange": {
                 "start": {
-                  "line": 114,
+                  "line": 118,
                   "column": 12
                 },
                 "end": {
-                  "line": 120,
+                  "line": 124,
                   "column": 13
                 }
               },
@@ -185,11 +159,11 @@
               "privacy": "public",
               "sourceRange": {
                 "start": {
-                  "line": 125,
+                  "line": 129,
                   "column": 12
                 },
                 "end": {
-                  "line": 128,
+                  "line": 132,
                   "column": 13
                 }
               },
@@ -206,11 +180,11 @@
               "privacy": "protected",
               "sourceRange": {
                 "start": {
-                  "line": 151,
+                  "line": 155,
                   "column": 8
                 },
                 "end": {
-                  "line": 159,
+                  "line": 166,
                   "column": 9
                 }
               },
@@ -220,15 +194,15 @@
             {
               "name": "connectedCallback",
               "description": "",
-              "privacy": "private",
+              "privacy": "protected",
               "sourceRange": {
-                "file": "bower_components/vaadin-control-state-mixin/vaadin-control-state-mixin.html",
+                "file": "../bower_components/vaadin-control-state-mixin/vaadin-control-state-mixin.html",
                 "start": {
-                  "line": 131,
+                  "line": 118,
                   "column": 4
                 },
                 "end": {
-                  "line": 136,
+                  "line": 123,
                   "column": 5
                 }
               },
@@ -239,15 +213,15 @@
             {
               "name": "disconnectedCallback",
               "description": "",
-              "privacy": "private",
+              "privacy": "protected",
               "sourceRange": {
-                "file": "bower_components/vaadin-control-state-mixin/vaadin-control-state-mixin.html",
+                "file": "../bower_components/vaadin-control-state-mixin/vaadin-control-state-mixin.html",
                 "start": {
-                  "line": 141,
+                  "line": 128,
                   "column": 4
                 },
                 "end": {
-                  "line": 146,
+                  "line": 139,
                   "column": 5
                 }
               },
@@ -256,17 +230,17 @@
               "inheritedFrom": "Vaadin.ControlStateMixin"
             },
             {
-              "name": "_focusedChanged",
+              "name": "_setFocused",
               "description": "",
               "privacy": "protected",
               "sourceRange": {
-                "file": "bower_components/vaadin-control-state-mixin/vaadin-control-state-mixin.html",
+                "file": "../bower_components/vaadin-control-state-mixin/vaadin-control-state-mixin.html",
                 "start": {
-                  "line": 148,
+                  "line": 141,
                   "column": 4
                 },
                 "end": {
-                  "line": 156,
+                  "line": 155,
                   "column": 5
                 }
               },
@@ -283,13 +257,13 @@
               "description": "",
               "privacy": "protected",
               "sourceRange": {
-                "file": "bower_components/vaadin-control-state-mixin/vaadin-control-state-mixin.html",
+                "file": "../bower_components/vaadin-control-state-mixin/vaadin-control-state-mixin.html",
                 "start": {
-                  "line": 158,
+                  "line": 157,
                   "column": 4
                 },
                 "end": {
-                  "line": 160,
+                  "line": 159,
                   "column": 5
                 }
               },
@@ -306,13 +280,13 @@
               "description": "",
               "privacy": "protected",
               "sourceRange": {
-                "file": "bower_components/vaadin-control-state-mixin/vaadin-control-state-mixin.html",
+                "file": "../bower_components/vaadin-control-state-mixin/vaadin-control-state-mixin.html",
                 "start": {
-                  "line": 162,
+                  "line": 161,
                   "column": 4
                 },
                 "end": {
-                  "line": 164,
+                  "line": 163,
                   "column": 5
                 }
               },
@@ -325,13 +299,13 @@
               "description": "",
               "privacy": "protected",
               "sourceRange": {
-                "file": "bower_components/vaadin-control-state-mixin/vaadin-control-state-mixin.html",
+                "file": "../bower_components/vaadin-control-state-mixin/vaadin-control-state-mixin.html",
                 "start": {
-                  "line": 175,
+                  "line": 174,
                   "column": 4
                 },
                 "end": {
-                  "line": 182,
+                  "line": 181,
                   "column": 5
                 }
               },
@@ -348,13 +322,13 @@
               "description": "Moving the focus from the host element causes firing of the blur event what leads to problems in IE.",
               "privacy": "private",
               "sourceRange": {
-                "file": "bower_components/vaadin-control-state-mixin/vaadin-control-state-mixin.html",
+                "file": "../bower_components/vaadin-control-state-mixin/vaadin-control-state-mixin.html",
                 "start": {
-                  "line": 188,
+                  "line": 187,
                   "column": 4
                 },
                 "end": {
-                  "line": 195,
+                  "line": 194,
                   "column": 5
                 }
               },
@@ -367,13 +341,13 @@
               "description": "Native bluring in the host element does nothing because it does not have the focus.\nIn chrome it works, but not in FF.",
               "privacy": "private",
               "sourceRange": {
-                "file": "bower_components/vaadin-control-state-mixin/vaadin-control-state-mixin.html",
+                "file": "../bower_components/vaadin-control-state-mixin/vaadin-control-state-mixin.html",
                 "start": {
-                  "line": 202,
+                  "line": 201,
                   "column": 4
                 },
                 "end": {
-                  "line": 205,
+                  "line": 204,
                   "column": 5
                 }
               },
@@ -386,13 +360,13 @@
               "description": "",
               "privacy": "protected",
               "sourceRange": {
-                "file": "bower_components/vaadin-control-state-mixin/vaadin-control-state-mixin.html",
+                "file": "../bower_components/vaadin-control-state-mixin/vaadin-control-state-mixin.html",
                 "start": {
-                  "line": 207,
+                  "line": 206,
                   "column": 4
                 },
                 "end": {
-                  "line": 220,
+                  "line": 219,
                   "column": 5
                 }
               },
@@ -409,13 +383,13 @@
               "description": "",
               "privacy": "protected",
               "sourceRange": {
-                "file": "bower_components/vaadin-control-state-mixin/vaadin-control-state-mixin.html",
+                "file": "../bower_components/vaadin-control-state-mixin/vaadin-control-state-mixin.html",
                 "start": {
-                  "line": 222,
+                  "line": 221,
                   "column": 4
                 },
                 "end": {
-                  "line": 238,
+                  "line": 237,
                   "column": 5
                 }
               },
@@ -428,16 +402,92 @@
               "inheritedFrom": "Vaadin.ControlStateMixin"
             },
             {
+              "name": "_addEventListenerToNode",
+              "description": "Add the event listener to the node if it is a gestures event.",
+              "privacy": "protected",
+              "sourceRange": {
+                "file": "../bower_components/polymer/lib/mixins/gesture-event-listeners.html",
+                "start": {
+                  "line": 55,
+                  "column": 6
+                },
+                "end": {
+                  "line": 59,
+                  "column": 7
+                }
+              },
+              "metadata": {},
+              "params": [
+                {
+                  "name": "node",
+                  "type": "!Node",
+                  "description": "Node to add event listener to"
+                },
+                {
+                  "name": "eventName",
+                  "type": "string",
+                  "description": "Name of event"
+                },
+                {
+                  "name": "handler",
+                  "type": "function (!Event): void",
+                  "description": "Listener function to add"
+                }
+              ],
+              "return": {
+                "type": "void"
+              },
+              "inheritedFrom": "Polymer.GestureEventListeners"
+            },
+            {
+              "name": "_removeEventListenerFromNode",
+              "description": "Remove the event listener to the node if it is a gestures event.",
+              "privacy": "protected",
+              "sourceRange": {
+                "file": "../bower_components/polymer/lib/mixins/gesture-event-listeners.html",
+                "start": {
+                  "line": 69,
+                  "column": 6
+                },
+                "end": {
+                  "line": 73,
+                  "column": 7
+                }
+              },
+              "metadata": {},
+              "params": [
+                {
+                  "name": "node",
+                  "type": "!Node",
+                  "description": "Node to remove event listener from"
+                },
+                {
+                  "name": "eventName",
+                  "type": "string",
+                  "description": "Name of event"
+                },
+                {
+                  "name": "handler",
+                  "type": "function (!Event): void",
+                  "description": "Listener function to remove"
+                }
+              ],
+              "return": {
+                "type": "void"
+              },
+              "inheritedFrom": "Polymer.GestureEventListeners"
+            },
+            {
               "name": "_checkedChanged",
               "description": "",
               "privacy": "protected",
               "sourceRange": {
                 "start": {
-                  "line": 161,
+                  "line": 168,
                   "column": 8
                 },
                 "end": {
-                  "line": 163,
+                  "line": 170,
                   "column": 9
                 }
               },
@@ -454,11 +504,11 @@
               "privacy": "protected",
               "sourceRange": {
                 "start": {
-                  "line": 165,
+                  "line": 172,
                   "column": 8
                 },
                 "end": {
-                  "line": 194,
+                  "line": 201,
                   "column": 9
                 }
               },
@@ -471,11 +521,11 @@
               "privacy": "protected",
               "sourceRange": {
                 "start": {
-                  "line": 200,
+                  "line": 207,
                   "column": 8
                 },
                 "end": {
-                  "line": 202,
+                  "line": 209,
                   "column": 9
                 }
               },
@@ -493,7 +543,7 @@
               "description": "",
               "privacy": "private",
               "sourceRange": {
-                "file": "bower_components/vaadin-themable-mixin/vaadin-themable-mixin.html",
+                "file": "../bower_components/vaadin-themable-mixin/vaadin-themable-mixin.html",
                 "start": {
                   "line": 46,
                   "column": 4
@@ -521,11 +571,11 @@
           "metadata": {},
           "sourceRange": {
             "start": {
-              "line": 104,
+              "line": 99,
               "column": 6
             },
             "end": {
-              "line": 203,
+              "line": 210,
               "column": 7
             }
           },
@@ -537,7 +587,7 @@
               "name": "autofocus",
               "description": "Specify that this control should have input focus when the page loads.",
               "sourceRange": {
-                "file": "bower_components/vaadin-control-state-mixin/vaadin-control-state-mixin.html",
+                "file": "../bower_components/vaadin-control-state-mixin/vaadin-control-state-mixin.html",
                 "start": {
                   "line": 50,
                   "column": 8
@@ -555,13 +605,13 @@
               "name": "disabled",
               "description": "If true, the user cannot interact with this element.",
               "sourceRange": {
-                "file": "bower_components/vaadin-control-state-mixin/vaadin-control-state-mixin.html",
+                "file": "../bower_components/vaadin-control-state-mixin/vaadin-control-state-mixin.html",
                 "start": {
-                  "line": 79,
+                  "line": 64,
                   "column": 8
                 },
                 "end": {
-                  "line": 83,
+                  "line": 68,
                   "column": 9
                 }
               },
@@ -574,11 +624,11 @@
               "description": "True if the radio button is checked.",
               "sourceRange": {
                 "start": {
-                  "line": 114,
+                  "line": 118,
                   "column": 12
                 },
                 "end": {
-                  "line": 120,
+                  "line": 124,
                   "column": 13
                 }
               },
@@ -590,11 +640,11 @@
               "description": "The value for this element.",
               "sourceRange": {
                 "start": {
-                  "line": 125,
+                  "line": 129,
                   "column": 12
                 },
                 "end": {
-                  "line": 128,
+                  "line": 132,
                   "column": 13
                 }
               },
@@ -619,13 +669,13 @@
               "description": "",
               "name": "",
               "range": {
-                "file": "vaadin-radio-button.html",
+                "file": "src/vaadin-radio-button.html",
                 "start": {
-                  "line": 62,
+                  "line": 57,
                   "column": 8
                 },
                 "end": {
-                  "line": 62,
+                  "line": 57,
                   "column": 21
                 }
               }
@@ -633,14 +683,16 @@
           ],
           "tagname": "vaadin-radio-button",
           "mixins": [
+            "Vaadin.ElementMixin",
             "Vaadin.ControlStateMixin",
-            "Vaadin.ThemableMixin"
+            "Vaadin.ThemableMixin",
+            "Polymer.GestureEventListeners"
           ]
         },
         {
-          "description": "`<vaadin-radio-group>` is a Polymer element for grouping vaadin-radio-buttons.\n\n```html\n<vaadin-radio-group>\n  <vaadin-radio-button name=\"foo\">Foo</vaadin-radio-button>\n  <vaadin-radio-button name=\"bar\">Bar</vaadin-radio-button>\n  <vaadin-radio-button name=\"baz\">Baz</vaadin-radio-button>\n</vaadin-radio-group>\n```\n\n### Styling\n\n[Generic styling/theming documentation](https://cdn.vaadin.com/vaadin-valo-theme/0.3.1/demo/customization.html)\n\nThe following state attributes are available for styling:\n\nAttribute  | Description | Part name\n-----------|-------------|------------\n`disabled`   | Set when the radio group and its children are disabled. | :host",
+          "description": "`<vaadin-radio-group>` is a Polymer element for grouping vaadin-radio-buttons.\n\n```html\n<vaadin-radio-group>\n  <vaadin-radio-button name=\"foo\">Foo</vaadin-radio-button>\n  <vaadin-radio-button name=\"bar\">Bar</vaadin-radio-button>\n  <vaadin-radio-button name=\"baz\">Baz</vaadin-radio-button>\n</vaadin-radio-group>\n```\n\n### Styling\n\nThe following state attributes are available for styling:\n\nAttribute  | Description | Part name\n-----------|-------------|------------\n`disabled`   | Set when the radio group and its children are disabled. | :host\n\nSee [ThemableMixin – how to apply styles for shadow parts](https://github.com/vaadin/vaadin-themable-mixin/wiki)",
           "summary": "",
-          "path": "vaadin-radio-group.html",
+          "path": "src/vaadin-radio-group.html",
           "properties": [
             {
               "name": "disabled",
@@ -649,11 +701,11 @@
               "privacy": "public",
               "sourceRange": {
                 "start": {
-                  "line": 67,
+                  "line": 54,
                   "column": 12
                 },
                 "end": {
-                  "line": 71,
+                  "line": 58,
                   "column": 13
                 }
               },
@@ -670,11 +722,11 @@
               "privacy": "protected",
               "sourceRange": {
                 "start": {
-                  "line": 73,
+                  "line": 60,
                   "column": 12
                 },
                 "end": {
-                  "line": 76,
+                  "line": 63,
                   "column": 13
                 }
               },
@@ -691,16 +743,17 @@
               "privacy": "public",
               "sourceRange": {
                 "start": {
-                  "line": 81,
+                  "line": 68,
                   "column": 12
                 },
                 "end": {
-                  "line": 85,
+                  "line": 72,
                   "column": 13
                 }
               },
               "metadata": {
                 "polymer": {
+                  "notify": true,
                   "observer": "\"_valueChanged\""
                 }
               }
@@ -713,11 +766,11 @@
               "privacy": "private",
               "sourceRange": {
                 "start": {
-                  "line": 92,
+                  "line": 79,
                   "column": 8
                 },
                 "end": {
-                  "line": 110,
+                  "line": 97,
                   "column": 9
                 }
               },
@@ -730,11 +783,11 @@
               "privacy": "protected",
               "sourceRange": {
                 "start": {
-                  "line": 112,
+                  "line": 99,
                   "column": 8
                 },
                 "end": {
-                  "line": 122,
+                  "line": 109,
                   "column": 9
                 }
               },
@@ -747,11 +800,11 @@
               "privacy": "protected",
               "sourceRange": {
                 "start": {
-                  "line": 128,
+                  "line": 115,
                   "column": 8
                 },
                 "end": {
-                  "line": 131,
+                  "line": 118,
                   "column": 9
                 }
               },
@@ -768,11 +821,11 @@
               "privacy": "protected",
               "sourceRange": {
                 "start": {
-                  "line": 133,
+                  "line": 120,
                   "column": 8
                 },
                 "end": {
-                  "line": 137,
+                  "line": 124,
                   "column": 9
                 }
               },
@@ -789,11 +842,11 @@
               "privacy": "protected",
               "sourceRange": {
                 "start": {
-                  "line": 139,
+                  "line": 126,
                   "column": 8
                 },
                 "end": {
-                  "line": 159,
+                  "line": 146,
                   "column": 9
                 }
               },
@@ -806,11 +859,11 @@
               "privacy": "protected",
               "sourceRange": {
                 "start": {
-                  "line": 161,
+                  "line": 148,
                   "column": 8
                 },
                 "end": {
-                  "line": 165,
+                  "line": 156,
                   "column": 9
                 }
               },
@@ -818,6 +871,9 @@
               "params": [
                 {
                   "name": "element"
+                },
+                {
+                  "name": "setFocusRing"
                 }
               ]
             },
@@ -827,11 +883,11 @@
               "privacy": "protected",
               "sourceRange": {
                 "start": {
-                  "line": 167,
+                  "line": 158,
                   "column": 8
                 },
                 "end": {
-                  "line": 169,
+                  "line": 160,
                   "column": 9
                 }
               },
@@ -844,11 +900,11 @@
               "privacy": "protected",
               "sourceRange": {
                 "start": {
-                  "line": 171,
+                  "line": 162,
                   "column": 8
                 },
                 "end": {
-                  "line": 183,
+                  "line": 174,
                   "column": 9
                 }
               },
@@ -865,11 +921,11 @@
               "privacy": "protected",
               "sourceRange": {
                 "start": {
-                  "line": 185,
+                  "line": 176,
                   "column": 8
                 },
                 "end": {
-                  "line": 197,
+                  "line": 188,
                   "column": 9
                 }
               },
@@ -886,11 +942,11 @@
               "privacy": "protected",
               "sourceRange": {
                 "start": {
-                  "line": 199,
+                  "line": 190,
                   "column": 8
                 },
                 "end": {
-                  "line": 203,
+                  "line": 194,
                   "column": 9
                 }
               },
@@ -907,11 +963,11 @@
               "privacy": "protected",
               "sourceRange": {
                 "start": {
-                  "line": 205,
+                  "line": 196,
                   "column": 8
                 },
                 "end": {
-                  "line": 209,
+                  "line": 200,
                   "column": 9
                 }
               },
@@ -928,11 +984,11 @@
               "privacy": "protected",
               "sourceRange": {
                 "start": {
-                  "line": 211,
+                  "line": 202,
                   "column": 8
                 },
                 "end": {
-                  "line": 221,
+                  "line": 212,
                   "column": 9
                 }
               },
@@ -952,11 +1008,11 @@
               "privacy": "protected",
               "sourceRange": {
                 "start": {
-                  "line": 223,
+                  "line": 214,
                   "column": 8
                 },
                 "end": {
-                  "line": 226,
+                  "line": 217,
                   "column": 9
                 }
               },
@@ -974,7 +1030,7 @@
               "description": "",
               "privacy": "private",
               "sourceRange": {
-                "file": "bower_components/vaadin-themable-mixin/vaadin-themable-mixin.html",
+                "file": "../bower_components/vaadin-themable-mixin/vaadin-themable-mixin.html",
                 "start": {
                   "line": 46,
                   "column": 4
@@ -1002,11 +1058,11 @@
           "metadata": {},
           "sourceRange": {
             "start": {
-              "line": 57,
+              "line": 44,
               "column": 6
             },
             "end": {
-              "line": 228,
+              "line": 219,
               "column": 7
             }
           },
@@ -1019,11 +1075,11 @@
               "description": "The current disabled state of the radio group. True if group and all internal radio buttons are disabled.",
               "sourceRange": {
                 "start": {
-                  "line": 67,
+                  "line": 54,
                   "column": 12
                 },
                 "end": {
-                  "line": 71,
+                  "line": 58,
                   "column": 13
                 }
               },
@@ -1035,11 +1091,11 @@
               "description": "Value of the radio group.",
               "sourceRange": {
                 "start": {
-                  "line": 81,
+                  "line": 68,
                   "column": 12
                 },
                 "end": {
-                  "line": 85,
+                  "line": 72,
                   "column": 13
                 }
               },
@@ -1047,7 +1103,14 @@
               "type": "string"
             }
           ],
-          "events": [],
+          "events": [
+            {
+              "type": "CustomEvent",
+              "name": "value-changed",
+              "description": "Fired when the `value` property changes.",
+              "metadata": {}
+            }
+          ],
           "styling": {
             "cssVariables": [],
             "selectors": []
@@ -1057,13 +1120,13 @@
               "description": "",
               "name": "",
               "range": {
-                "file": "vaadin-radio-group.html",
+                "file": "src/vaadin-radio-group.html",
                 "start": {
-                  "line": 26,
+                  "line": 13,
                   "column": 4
                 },
                 "end": {
-                  "line": 26,
+                  "line": 13,
                   "column": 27
                 }
               }
